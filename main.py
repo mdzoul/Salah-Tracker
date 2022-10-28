@@ -2,6 +2,7 @@
 This code allows user to track their habits on Pixela.
 NOTE: Remember to uncomment/comment on the relevant responses.
 """
+import os
 from datetime import datetime
 import requests
 
@@ -9,8 +10,8 @@ QUANTITY = input("How many times did you perform Salah today?\n")
 
 TODAY = datetime.now().strftime("%Y%m%d")
 USERNAME = "zoul"
-TOKEN = "ucpiuuilhctpqtuqm"
-GRAPH_ID = "solat5"
+TOKEN = os.environ.get("TOKEN")
+GRAPH_ID = "salah5"
 
 HEADERS = {
     "X-USER-TOKEN": TOKEN
@@ -42,6 +43,10 @@ GRAPH_CONFIG = {
 # graph_response = requests.post(url=GRAPH_ENDPOINT, json=GRAPH_CONFIG, headers=HEADERS)
 # print(graph_response.text)
 
+# ------------------- DELETE GRAPH ------------------- #
+# delete_graph_response = requests.delete(url=f"{GRAPH_ENDPOINT}/{GRAPH_ID}", json=GRAPH_CONFIG, headers=HEADERS)
+# print(delete_graph_response.text)
+
 # ------------------- POST A PIXEL ------------------- #
 POST_PIXEL_ENDPOINT = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs/{GRAPH_ID}"
 POST_PIXEL_CONFIG = {
@@ -49,7 +54,7 @@ POST_PIXEL_CONFIG = {
     "quantity": QUANTITY,
 }
 
-post_pixel_response = requests.put(
+post_pixel_response = requests.post(
     url=POST_PIXEL_ENDPOINT,
     json=POST_PIXEL_CONFIG,
     headers=HEADERS
