@@ -1,3 +1,4 @@
+# TODO: Create classes and methods for a more functional web app
 """
 This code allows user to track their habits on Pixela.
 NOTE: Remember to uncomment/comment on the relevant responses.
