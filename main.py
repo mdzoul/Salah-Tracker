@@ -77,7 +77,9 @@ if START == "1":
 
 # ------------------- UPDATE A PIXEL ------------------- #
 if START == "2":
-    UPDATE_PIXEL_ENDPOINT = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs/{GRAPH_ID}/{TODAY}"
+    date = input("Input date (YYYYMMDD):\n")
+
+    UPDATE_PIXEL_ENDPOINT = f"{PIXELA_ENDPOINT}/{USERNAME}/graphs/{GRAPH_ID}/{date}"
 
     quantity = input("How many times did you perform Salah today?\n")
 
